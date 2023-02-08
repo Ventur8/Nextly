@@ -1,9 +1,11 @@
-import './globals.css'
+import { Header_component } from "./components/header";
+import MusicPlayerSlider from "./components/player";
+import "./globals.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -12,7 +14,15 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Header_component />
+        {children}
+        <footer>
+          <div className="musicbox">
+            <MusicPlayerSlider />
+          </div>
+        </footer>
+      </body>
     </html>
-  )
+  );
 }
