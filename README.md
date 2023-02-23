@@ -5,6 +5,8 @@ Este proyecto incluye el desarrollo de una aplicacion de Spotify API con Next.JS
  
 Se han realizado algunas correciones para que funciones con el path en fase beta '/app' de next.js 13
 
+!AUN EN DESARROLLO!
+
 ## Getting Started
 
 First, run the development server:
