@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Informacion
+
+Este proyecto incluye el desarrollo de una aplicacion de Spotify API con Next.JS 13, aplicamos tecnologias como next-auth y atom para manejar el estado global.
+ 
+Se han realizado algunas correciones para que funciones con el path en fase beta '/app' de next.js 13
 
 ## Getting Started
 
@@ -22,6 +27,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Informacion
 
 Este proyecto incluye el desarrollo de una aplicacion de Spotify API con Next.JS 13, aplicamos tecnologias como next-auth y atom para manejar el estado global.
  
