@@ -1,23 +1,26 @@
-import * as React from 'react';
-import Login_component from './login_component';
-import {getProviders,signIn}from "next-auth/react";
 
+import { Grid } from "@mui/material"
+import { getProviders } from "next-auth/react"
+import Login_component from "./login_component"
 
-export default function LoginPage({providers}) {
+export default async () => {
+  const providers = await getProviders()
+  console.log("Providers", providers)
   
-    return (
-     
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'80vh', backgroundColor:'black'}}>
-        <Login_component/>
-      </div>
+  return(
+    <div style={{alignItems: "center"}}>
       
-    )
-  }
+ 
+        {Object.values(providers).map((provider) => (
+          <div key={provider.name}>
+           
+            <Login_component name={provider.name} id={provider.id}/>
+          </div>
+          
+        ))}
+  
+     
+    </div>
 
-  export async function getServerSideProps() {
-    const providers = await getProviders()
-
-    return {
-        props: { providers }
-    }
-  }
+  )
+}

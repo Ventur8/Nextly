@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
-import SpótifyProvider from 'next-auth/providers/spotify'
+import SpotifyProvider from 'next-auth/providers/spotify'
+import { signOut } from 'next-auth/react';
 import spotifyApi,{ LOGIN_URL } from '../../../lib/spotify'
 
 
@@ -7,8 +8,8 @@ import spotifyApi,{ LOGIN_URL } from '../../../lib/spotify'
 
 async function refreshAccesToken(token) {
     try {
-        spotifyApi.setRefreshToken(token.refreshToken);
         spotifyApi.setAccessToken(token.accessToken);
+        spotifyApi.setRefreshToken(token.refreshToken);
 
         const {body:refreshedToken} = await spotifyApi.refreshAccessToken();
         console.log("refeshedToken es ",refreshedToken);
@@ -21,6 +22,7 @@ async function refreshAccesToken(token) {
             refreshToken: refreshedToken.refresh_token ?? token.refreshToken
         }
     } catch (error) {
+        signOut();
         console.log(error);
         return{
             ...token,
@@ -34,12 +36,12 @@ async function refreshAccesToken(token) {
 
 
 export default NextAuth({
-
+ 
     // Configure one or more authentication providers
     providers: [
-        SpótifyProvider({
-            clientId: process.env.SPOTIFY_CLIENT_ID,
-            clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+        SpotifyProvider({
+            clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
+            clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
             authorization: LOGIN_URL
         }),
         // ...add more providers here
@@ -53,8 +55,8 @@ export default NextAuth({
             if(account && user){
              return{
                     ...token,
-                    accessToken: account.accessToken,
-                    refreshToken: account.refreshToken,
+                    accessToken: account.access_token,
+                    refreshToken: account.refresh_token,
                     username: account.providerAccountId,
                     accesTokenExpires: account.expires_at * 1000
              };
@@ -63,6 +65,7 @@ export default NextAuth({
                 console.log('Token no expirado');
                 return token;
             };
+            
             console.log('Token expirado');
             //La token expira
             return await refreshAccesToken(token);

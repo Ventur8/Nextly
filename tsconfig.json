@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/mainBody.jsx", "app/login/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/mainBody.jsx", "app/login/page.jsx", "app/page.jsx", "pages/api/auth/[...nextauth].js", "app/login/login_component.jsx", "app/components/sidebar_component.tsx"],
   "exclude": ["node_modules"]
 }

@@ -26,7 +26,7 @@ const Widget = styled("div")(({ theme }) => ({
   width: "100%",
   maxWidth: "100%",
   margin: "auto",
-  height: "auto",
+  height: '13%',
   zIndex: 1,
   backgroundColor:
     theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
@@ -68,7 +68,7 @@ export default function MusicPlayerSlider() {
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
   return (
     <>
-      <Box sx={{ width: "100%", overflow: "hidden" }}>
+      <Box sx={{ width: "100%", overflow: "hidden"   }}>
         <Widget>
           <Grid container spacing={2} >
             {/* imagen e info de cancion */}
